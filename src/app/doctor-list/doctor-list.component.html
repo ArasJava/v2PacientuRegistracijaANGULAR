@@ -1,0 +1,40 @@
+<!--Testavimas daktatu is duombazes-->
+<!--<div class="container">-->
+<!--  <tr *ngFor="let doctor of doctors" >-->
+<!--    <td> {{doctor.doctorFirstName }} </td>-->
+<!--    <td> {{doctor.doctorLastName }} </td>-->
+<!--  </tr>-->
+<!--</div>-->
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-xl-8 col-lg-8 col-md-10 text-center">
+        <div class="mb-3">
+          <h2>Pasirinkite gydytoją</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div *ngFor="let doctor of doctors" class="row justify-content-center">
+
+        <div class="col-lg-3 col-md-5">
+        <div class="team">
+          <div class="team-avatar">
+            <img class="w-100" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+          </div>
+          <div class="team-content">
+            <div class="team-content-inner">
+              <div class="d-flex">
+                <div class="team-info">
+                  <h5 class="mb-0"><a href="#" class="avatar-name"> {{doctor.doctorName}} </a></h5>
+                  <span class="team-position">{{doctor.doctorSpecialization}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
