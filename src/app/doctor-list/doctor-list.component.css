@@ -149,3 +149,7 @@ body{
   margin-bottom: 0;
   list-style: none;
 }
+/*.center {*/
+/*  display: flex;*/
+/*  justify-content: center;*/
+/*}*/
