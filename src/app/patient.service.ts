@@ -16,15 +16,15 @@ export class PatientService {
     return this.httpClient.get<Patient[]>(`${this.baseURL}/all`);
   }
 
-  public addPatients(patient: Patient): Observable<Patient>{
+  public addPatient(patient: Patient): Observable<Patient>{
     return this.httpClient.post<Patient>(`${this.baseURL}/add`, patient);
   }
 
-  public updatePatients(patient: Patient): Observable<Patient>{
+  public updatePatient(patient: Patient): Observable<Patient>{
     return this.httpClient.put<Patient>(`${this.baseURL}/update`, patient);
   }
 
-  public deletePatients(patientId: number ): Observable<void>{
+  public deletePatient(patientId: number ): Observable<void>{
     return this.httpClient.delete<void>(`${this.baseURL}/delete/${patientId}`);
   }
 }

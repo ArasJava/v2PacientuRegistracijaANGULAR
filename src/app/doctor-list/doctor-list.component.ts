@@ -35,11 +35,53 @@ export class DoctorListComponent implements OnInit {
   }
 
   private getDoctors(): void {
-    this.doctorService.getDoctor().subscribe(
+    this.doctorService.getDoctors().subscribe(
       (response:Doctor[]) => {
         this.doctors = response;},
       (error :HttpErrorResponse) => {
         alert(error.message);
     });
   }
+
+  public onUpdateDoctor(doctor: Doctor): void {
+    this.doctorService.updateDoctor(doctor)
+      .subscribe(
+        (response: Doctor) => {
+          // console.log(response);
+          this.doctors = this.doctors?.map((doc)=>doc.id ===response.id ? response : doc)
+        },
+        (error: HttpErrorResponse) => {
+          alert(error.message);
+        }
+      );
+  }
+
+  public onAddDoctor(doctor: Doctor): void {
+    this.doctorService.addDoctor(doctor)
+      .subscribe(
+        (response: Doctor) => {
+          // console.log(response);
+          // @ts-ignore
+          this.doctors = [...this.doctors, response]
+        },
+        (error: HttpErrorResponse) => {
+          alert(error.message);
+        }
+      );
+  }
+
+  public onDeleteDoctor(doctorId: number): void {
+    this.doctorService.deleteDoctor(doctorId)
+      .subscribe(
+        (response: void) => {
+          // console.log(response);
+          // @ts-ignore
+          this.doctors = this.doctors.filter((doctor)=>doctorId !==doctorId)
+        },
+        (error: HttpErrorResponse) => {
+          alert(error.message);
+        }
+      );
+  }
+
 }

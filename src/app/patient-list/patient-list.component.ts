@@ -28,4 +28,46 @@ export class PatientListComponent implements OnInit {
         alert(error.message);
       });
   }
+
+  public onUpdatePatient(patient: Patient): void {
+    this.patientService.updatePatient(patient)
+      .subscribe(
+        (response: Patient) => {
+          // console.log(response);
+          this.patients = this.patients?.map((pat)=>pat.id ===response.id ? response : pat)
+        },
+        (error: HttpErrorResponse) => {
+          alert(error.message);
+        }
+      );
+  }
+
+  public onAddPatient(patient: Patient): void {
+    this.patientService.addPatient(patient)
+      .subscribe(
+        (response: Patient) => {
+          // console.log(response);
+          // @ts-ignore
+          this.patients = [...this.patients, response]
+        },
+        (error: HttpErrorResponse) => {
+          alert(error.message);
+        }
+      );
+  }
+
+  public onDeletePatient(patientId: number): void {
+    this.patientService.deletePatient(patientId)
+      .subscribe(
+        (response: void) => {
+          // console.log(response);
+          // @ts-ignore
+          this.patients = this.patients.filter((patient)=> patientId !== patientId)
+        },
+        (error: HttpErrorResponse) => {
+          alert(error.message);
+        }
+      );
+  }
+
 }

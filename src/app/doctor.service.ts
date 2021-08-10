@@ -13,7 +13,7 @@ export class DoctorService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getDoctor(): Observable<Doctor[]>{
+  public getDoctors(): Observable<Doctor[]>{
     return this.httpClient.get<Doctor[]>(`${this.baseURL}/all`);
   }
 
