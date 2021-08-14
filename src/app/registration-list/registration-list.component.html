@@ -1,0 +1,42 @@
+<div class="center">
+  <p>registration-list works!</p>
+</div>
+<!--Paciento testavimas-->
+<!--<div class="container">-->
+<!--  <div *ngFor="let registration of registrations">-->
+<!--    <div> {{registration.patientID }} </div>-->
+<!--    <div> {{registration.doctorID }} </div>-->
+<!--    <div> {{registration.date }} </div>-->
+<!--    <div> {{registration.time }} </div>-->
+<!--    <div> {{registration.purpose }} </div>-->
+<!--    <div> {{registration.message }} </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+<div class="container-md">
+  <div class="row">
+
+    <div class="col-sm mb-3" >
+      <select class="form-select" multiple aria-label="multiple select example">
+        <option selected>Pažymėkite prašau at tai bus:</option>
+        <option value="1">1. PIRMINĖ KONSULTACIJA</option>
+        <option value="2">2. PAKARTOTINĖ KONSULTACIJA</option>
+        <option value="3">3. REGISTRACIJA PROCEDŪRAI</option>
+      </select>
+    </div>
+
+    <div class="col-sm col-xs-12 col-12 col-md-4 form-group form-control-color">
+      <input type="text"
+             placeholder="Datepicker"
+             class="form-control"
+             bsDatepicker>
+    </div>
+    <!--    <div class="col-xs-12 col-12 col-md-4 form-group">-->
+    <!--      <input type="text"-->
+    <!--             placeholder="Daterangepicker"-->
+    <!--             class="form-control"-->
+    <!--             bsDaterangepicker>-->
+    <!--    </div>-->
+
+  </div>
+</div>
