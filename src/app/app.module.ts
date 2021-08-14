@@ -9,6 +9,8 @@ import { RegistrationListComponent } from './registration-list/registration-list
 import {FormsModule} from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import {PatientService} from "./patient.service";
+import {RegistrationService} from "./registration.service";
 
 @NgModule({
   declarations: [

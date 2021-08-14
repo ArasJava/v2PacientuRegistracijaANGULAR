@@ -16,30 +16,34 @@
 <!--  </tr>-->
 <!--</div>-->
 
+
+
 <div class="align-center">
   <div class="mb-3" style="width: 24rem">
-    <label for="patientFirstName" class="form-label">VARDAS</label>
-    <input type="text" class="form-control" id="patientFirstName" placeholder="....Jūsų vardas ">
+    <label for="firstName" class="form-label">VARDAS</label>
+    <input type="text" ngModel name="firstName" class="form-control" id="firstName" placeholder="....Jūsų vardas ">
 <!--    <p>{{id}}</p>-->
   </div>
   <div class="mb-3" style="width: 24rem">
-    <label for="patientLastName" class="form-label">PAVARDĖ</label>
-    <input type="text" class="form-control" id="patientLastName" placeholder="....Jūsų pavardė ">
+    <label for="lastName" class="form-label">PAVARDĖ</label>
+    <input type="text" ngModel ngModel name="lastName" class="form-control" id="lastName" placeholder="....Jūsų pavardė ">
   </div>
   <div class="mb-3" style="width: 24rem">
-    <label for="patientDayOfBirth" class="form-label">GIMIMO DATA ( METAI-MĖNUO-DIENA)</label>
-    <input type="date" class="form-control" id="patientDayOfBirth" placeholder="....Jūsų gimimo data metai-mėnuo-diena">
+    <label for="dayOfBirth" class="form-label">GIMIMO DATA ( METAI-MĖNUO-DIENA)</label>
+    <input type="date" ngModel name="dayOfBirth" class="form-control" id="dayOfBirth" placeholder="....Jūsų gimimo data metai-mėnuo-diena">
   </div>
   <div class="mb-3" style="width: 24rem">
-    <label for="patientPhoneNumber" class="form-label">TELEFONO NUMERIS +370 000 0000</label>
-    <input type="text" class="form-control" id="patientPhoneNumber"
+    <label for="telephoneNumber" class="form-label">TELEFONO NUMERIS +370 000 0000</label>
+    <input type="text" ngModel name="telephoneNumber" class="form-control" id="telephoneNumber"
            placeholder="....Jūsų telefono numeris +370 ooo oooo ">
   </div>
 </div>
+
+
 <div class="mb-3">
-  <label for="exampleFormControlTextarea1" class="form-label">Patikslinkite prašau vizito tikslą</label>
-  <textarea class="form-control" id="exampleFormControlTextarea1"
+  <label for="message" class="form-label">Patikslinkite prašau vizito tikslą</label>
+  <textarea type="text" ngModel name="message" class="form-control" id="message"
             placeholder="Kreipiuosi dėl ...  " rows="3"></textarea>
 </div>
 
-
+<!--<button (click)="{{patientService.addPaient}}"  type="submit" class="btn btn-secondary">Patvirtinu</button>-->

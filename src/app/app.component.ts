@@ -1,4 +1,6 @@
 import {Component} from '@angular/core';
+import {Patient} from "./patient";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-root',
@@ -6,6 +8,11 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title1 = 'Registracija į dermatologinę kliniką';
-  title2 = 'Pasirinkite gydytoją'
+  registrationTitle = 'Registracija į dermatologinę kliniką';
+  selectDoctor = 'Pasirinkite gydytoją';
+  registrationDone = ''
+
+
+
+
 }

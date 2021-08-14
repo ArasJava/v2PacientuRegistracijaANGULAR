@@ -3,6 +3,7 @@ import {PatientService} from "../patient.service";
 import {Patient} from "../patient";
 import {Doctor} from "../doctor";
 import {HttpErrorResponse} from "@angular/common/http";
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-patient-list',
@@ -11,7 +12,7 @@ import {HttpErrorResponse} from "@angular/common/http";
 })
 export class PatientListComponent implements OnInit {
 
-  patients: Patient[] | undefined;
+  public patients?: Patient[] | undefined;
 
   constructor(private patientService: PatientService) {
   }
