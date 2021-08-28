@@ -11,8 +11,13 @@ import {HttpErrorResponse} from "@angular/common/http";
   styleUrls: ['./registration-list.component.css']
 })
 export class RegistrationListComponent implements OnInit {
+  registrationFormTitle = 'Registracija į dermatologinę kliniką';
+  selectDoctorFormTitle = 'Pasirinkite gydytoją';
+  registrationDone = ''
 
   registrations: Registration[] | undefined;
+  doctors: Doctor[] | undefined;
+  patient: Patient[] | undefined;
 
   constructor(private registrationService: RegistrationService) { }
 
@@ -68,5 +73,6 @@ export class RegistrationListComponent implements OnInit {
         }
       );
   }
+
 
 }

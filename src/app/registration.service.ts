@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Registration} from "./registration";
+import {Doctor} from "./doctor";
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +27,9 @@ export class RegistrationService {
 
   public deleteRegistration(registrationId :number): Observable<void> {
     return this.httpClient.delete<void>(`${this.baseURL}/delete/${registrationId}`);
+  }
+
+  public getDoctors(): Observable<Doctor[]>{
+    return this.httpClient.get<Doctor[]>(`${this.baseURL}/all`);
   }
 }

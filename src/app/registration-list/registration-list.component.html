@@ -1,42 +1,138 @@
-<div class="center">
-  <p>registration-list works!</p>
+<!--<div>-->
+<!--  <p>registration-list works!</p>-->
+<!--</div>-->
+<h5 class="text-center"> {{registrationFormTitle}}</h5>
+<h5 class="text-center"> {{selectDoctorFormTitle}}</h5>
+
+<!--<div class="container">-->
+<!--  <div class="row justify-content-center">-->
+<!--    <div class="col-xl-2 col-md-5 center" *ngFor="let doctor of doctors">-->
+<!--      <div class="team">-->
+<!--        <div class="team-avatar">-->
+<!--          <img class="w-100" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">-->
+<!--        </div>-->
+<!--        <div>-->
+<!--          <input type="checkbox" class="btn-check" id="btnDoctorCheck" autocomplete="off">-->
+<!--          <label class="btn btn-outline-secondary" for="btnDoctorCheck">{{doctor.doctorName}}-->
+<!--            {{doctor.doctorSpecialization}}</label>-->
+<!--        </div>-->
+<!--        &lt;!&ndash;Ant paveiksliuko isdidejantis pavadinimas&ndash;&gt;-->
+<!--        &lt;!&ndash;          <div class="team-content">&ndash;&gt;-->
+<!--        &lt;!&ndash;            <div class="team-content-inner">&ndash;&gt;-->
+<!--        &lt;!&ndash;              <div class="d-flex">&ndash;&gt;-->
+<!--        &lt;!&ndash;                <div class="team-info">&ndash;&gt;-->
+<!--        &lt;!&ndash;                  <h5 class="mb-0"><a href="#" class="avatar-name"> {{doctor.doctorName}} </a></h5>&ndash;&gt;-->
+<!--        &lt;!&ndash;                  <span class="team-position">{{doctor.doctorSpecialization}}</span>&ndash;&gt;-->
+<!--        &lt;!&ndash;                </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;              </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;            </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;          </div>&ndash;&gt;-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--    <form #addFormReg="ngForm" (ngSubmit)="getDoctors(addFormReg)">-->
+
+
+<div class="form-select" >
+  <label for="doctor">Pasirinkite gydytoją iš sąrašo</label>
+  <select id="doctor" ngModel name="doctor" class="form-control" multiple aria-label="multiple select example">
+    <option *ngFor="let doctor of doctors" [value]="[doctor]">
+      {{doctor}}
+    </option>
+  </select>
 </div>
-<!--Paciento testavimas-->
+
+<!--</form>-->
+<!--<div class="col-sm mb-3" >-->
+<!--  <select class="form-select" multiple aria-label="multiple select example">-->
+<!--    <option *ngFor="let doctor of doctors" [value]="[doctor.name]">-->
+<!--      {{doctor.name}}-->
+<!--    <option selected>Pažymėkite prašau kas tai bus:</option>-->
+<!--    <option value="pirmine">1. PIRMINĖ KONSULTACIJA </option>-->
+<!--    <option value="pakartotinė">2. PAKARTOTINĖ KONSULTACIJA</option>-->
+<!--    <option value="procedūra">3. REGISTRACIJA PROCEDŪRAI</option>-->
+<!--  </select>-->
+<!--</div>-->
+
+<!--<p>Registracijos iš duombazės</p>-->
 <!--<div class="container">-->
 <!--  <div *ngFor="let registration of registrations">-->
-<!--    <div> {{registration.patientID }} </div>-->
-<!--    <div> {{registration.doctorID }} </div>-->
-<!--    <div> {{registration.date }} </div>-->
-<!--    <div> {{registration.time }} </div>-->
-<!--    <div> {{registration.purpose }} </div>-->
-<!--    <div> {{registration.message }} </div>-->
+<!--    <div> Pat_Id: {{registration.patientID }} </div>-->
+<!--    <div> Doc_Id: {{registration.doctorID }} </div>-->
+<!--    <div> Date: {{registration.date }} </div>-->
+<!--    <div> Time: {{registration.time }} </div>-->
+<!--    <div> Purpose: {{registration.purpose }} </div>-->
+<!--    <div> Message: {{registration.message }} </div>-->
 <!--  </div>-->
 <!--</div>-->
 
-<div class="container-md">
-  <div class="row">
 
-    <div class="col-sm mb-3" >
+
+
+<!--    <form #addFormDoc="ngForm" (ngSubmit)="onAddEmployee(addFormDoc)">-->
+
+    <div class="col-sm mb-3">
       <select class="form-select" multiple aria-label="multiple select example">
-        <option selected>Pažymėkite prašau at tai bus:</option>
-        <option value="1">1. PIRMINĖ KONSULTACIJA</option>
-        <option value="2">2. PAKARTOTINĖ KONSULTACIJA</option>
-        <option value="3">3. REGISTRACIJA PROCEDŪRAI</option>
+        <option selected>Pažymėkite prašau kas tai bus:</option>
+        <option value="pirmine">1. PIRMINĖ KONSULTACIJA</option>
+        <option value="pakartotinė">2. PAKARTOTINĖ KONSULTACIJA</option>
+        <option value="procedūra">3. REGISTRACIJA PROCEDŪRAI</option>
       </select>
     </div>
 
-    <div class="col-sm col-xs-12 col-12 col-md-4 form-group form-control-color">
-      <input type="text"
-             placeholder="Datepicker"
-             class="form-control"
-             bsDatepicker>
-    </div>
-    <!--    <div class="col-xs-12 col-12 col-md-4 form-group">-->
-    <!--      <input type="text"-->
-    <!--             placeholder="Daterangepicker"-->
-    <!--             class="form-control"-->
-    <!--             bsDaterangepicker>-->
-    <!--    </div>-->
+<!--&lt;!&ndash;Data picker begin&ndash;&gt;-->
+<!--    <div class="col-sm col-xs-12 col-12 col-md-4 form-group form-control-color">-->
+<!--      <input type="text"-->
+<!--             placeholder="Datepicker"-->
+<!--             class="form-control"-->
+<!--             bsDatepicker>-->
+<!--    </div>-->
+<!--    &lt;!&ndash;    <div class="col-xs-12 col-12 col-md-4 form-group">&ndash;&gt;-->
+<!--    &lt;!&ndash;      <input type="text"&ndash;&gt;-->
+<!--    &lt;!&ndash;             placeholder="Daterangepicker"&ndash;&gt;-->
+<!--    &lt;!&ndash;             class="form-control"&ndash;&gt;-->
+<!--    &lt;!&ndash;             bsDaterangepicker>&ndash;&gt;-->
+<!--    &lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;Data picker end&ndash;&gt;-->
 
-  </div>
-</div>
+<!--    <form #addFormReg="ngForm" (ngSubmit)="onAddPatient(addFormReg)">-->
+    <div class="mb-3" style="width: 24rem">
+      <label for="firstName" class="form-label">VARDAS</label>
+      <input type="text" ngModel name="firstName" class="form-control" id="firstName"
+             placeholder="vardo įrašymo vieta ">
+    </div>
+    <div class="mb-3" style="width: 24rem">
+      <label for="lastName" class="form-label">PAVARDĖ</label>
+      <input type="text" ngModel name="lastName" class="form-control" id="lastName"
+             placeholder="pavardės įrašymo vieta ">
+    </div>
+    <div class="mb-3" style="width: 24rem">
+      <label for="dayOfBirth" class="form-label">GIMIMO DATA ( pasirinkite kalendoriuje )</label>
+      <input type="date" ngModel name="dayOfBirth" class="form-control" id="dayOfBirth" placeholder="">
+    </div>
+    <div class="mb-3" style="width: 24rem">
+      <label for="telephoneNumber" class="form-label">TELEFONO NUMERIS (pavyzdžiui +370 000 0000)</label>
+      <input type="text" ngModel name="telephoneNumber" class="form-control" id="telephoneNumber"
+             placeholder="telefono numerio įrašymo vieta ">
+    </div>
+<!--    </form>-->
+
+    <div class="mb-3">
+      <label for="message" class="form-label">Patikslinkite prašau vizito tikslą</label>
+      <textarea type="text" ngModel name="message" class="form-control" id="message"
+                placeholder="Pavyzdžiui: Kreipiuosi dėl ...  " rows="3"></textarea>
+    </div>
+
+    <div class="container">
+      <div class="col-12 center ">
+        <!--      [disabled]="addForm.invalid"-->
+        <button (click)="registrationDone = 'Užsiregistravote, ačiū'" type="submit" class="btn btn-secondary">
+          Patvirtinu
+        </button>
+      </div>
+      <h3 class="text-center"> {{registrationDone}}</h3>
+    </div>
+
+
+

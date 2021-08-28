@@ -1,49 +1,43 @@
-<div class="center">
-  <p>patient-list works!</p>
-</div>
-
-<!--<div class="container">-->
-<!--  <tr *ngFor="let patient of patients">-->
-<!--    <td> {{patient.firstName }} </td>-->
-<!--    <td> {{patient.lastName }} </td>-->
-<!--    <td> {{patient.dateOfBirth }} </td>-->
-<!--    <td> {{patient.telephoneNumber }} </td>-->
-<!--    &lt;!&ndash;      <td>&ndash;&gt;-->
-<!--    &lt;!&ndash;        <button (click) = "updateEmployee(employee.id)" class = "btn btn-info"> Update</button>&ndash;&gt;-->
-<!--    &lt;!&ndash;        <button (click) = "deleteEmployee(employee.id)" class = "btn btn-danger" style="margin-left: 10px"> Delete</button>&ndash;&gt;-->
-<!--    &lt;!&ndash;        <button (click) = "employeeDetails(employee.id)" class = "btn btn-info" style="margin-left: 10px"> View</button>&ndash;&gt;-->
-<!--    &lt;!&ndash;      </td>&ndash;&gt;-->
-<!--  </tr>-->
+<!--<div >-->
+<!--  <p>patient-list works!</p>-->
 <!--</div>-->
+<p>Registruoti pacientai: </p>
+<div class="container">
+  <tr *ngFor="let patient of patients">
+    <td> {{patient.firstName }} </td>
+    <td> {{patient.lastName }} </td>
+    <td> {{patient.dateOfBirth }} </td>
+    <td> {{patient.telephoneNumber }} </td>
+  </tr>
+</div>
 
+<h5 class="text"> Paciento duomenys</h5>
+<form #patientForm="ngForm" (ngSubmit)="onAddPatient(patientForm.value)">
 
-
-<div class="align-center">
-  <div class="mb-3" style="width: 24rem">
-    <label for="firstName" class="form-label">VARDAS</label>
-    <input type="text" ngModel name="firstName" class="form-control" id="firstName" placeholder="....Jūsų vardas ">
-<!--    <p>{{id}}</p>-->
-  </div>
-  <div class="mb-3" style="width: 24rem">
-    <label for="lastName" class="form-label">PAVARDĖ</label>
-    <input type="text" ngModel ngModel name="lastName" class="form-control" id="lastName" placeholder="....Jūsų pavardė ">
-  </div>
-  <div class="mb-3" style="width: 24rem">
-    <label for="dayOfBirth" class="form-label">GIMIMO DATA ( METAI-MĖNUO-DIENA)</label>
-    <input type="date" ngModel name="dayOfBirth" class="form-control" id="dayOfBirth" placeholder="....Jūsų gimimo data metai-mėnuo-diena">
-  </div>
-  <div class="mb-3" style="width: 24rem">
-    <label for="telephoneNumber" class="form-label">TELEFONO NUMERIS +370 000 0000</label>
-    <input type="text" ngModel name="telephoneNumber" class="form-control" id="telephoneNumber"
-           placeholder="....Jūsų telefono numeris +370 ooo oooo ">
-  </div>
+<div class="mb-3" style="width: 24rem">
+  <label for="firstName" class="form-label">VARDAS</label>
+  <input type="text" ngModel name="firstName" class="form-control" id="firstName"
+         placeholder="vardo įrašymo vieta" required>
+</div>
+<div class="mb-3" style="width: 24rem">
+  <label for="lastName" class="form-label">PAVARDĖ</label>
+  <input type="text" ngModel name="lastName" class="form-control" id="lastName"
+         placeholder="pavardės įrašymo vieta" required>
+</div>
+<div class="mb-3" style="width: 24rem" data-date-format="yyyy-mm-dd">
+  <label for="dateOfBirth" class="form-label">GIMIMO DATA ( pasirinkite kalendoriuje )</label>
+  <input type="date" ngModel name="dateOfBirth" class="form-control" id="dateOfBirth" required>
 </div>
 
 
-<div class="mb-3">
-  <label for="message" class="form-label">Patikslinkite prašau vizito tikslą</label>
-  <textarea type="text" ngModel name="message" class="form-control" id="message"
-            placeholder="Kreipiuosi dėl ...  " rows="3"></textarea>
+<div class="mb-3" style="width: 24rem">
+  <label for="telephoneNumber" class="form-label">TELEFONO NUMERIS (pavyzdžiui +370 000 0000)</label>
+  <input type="text" ngModel name="telephoneNumber" class="form-control" id="telephoneNumber"
+         placeholder="telefono numerio įrašymo vieta" required>
 </div>
 
-<!--<button (click)="{{patientService.addPaient}}"  type="submit" class="btn btn-secondary">Patvirtinu</button>-->
+<div class="col-12 ">
+  <button [disabled]="patientForm.invalid" type="submit" class="btn btn-primary">Patvirtinti</button>
+</div>
+</form>
+

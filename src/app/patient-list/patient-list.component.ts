@@ -12,7 +12,7 @@ import {NgForm} from "@angular/forms";
 })
 export class PatientListComponent implements OnInit {
 
-  public patients?: Patient[] | undefined;
+   patients: Patient[] | undefined;
 
   constructor(private patientService: PatientService) {
   }

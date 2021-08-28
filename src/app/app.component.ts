@@ -8,9 +8,6 @@ import {HttpErrorResponse} from "@angular/common/http";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  registrationTitle = 'Registracija į dermatologinę kliniką';
-  selectDoctor = 'Pasirinkite gydytoją';
-  registrationDone = ''
 
 
 
