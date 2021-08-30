@@ -4,6 +4,7 @@ import {Patient} from "../patient";
 import {Doctor} from "../doctor";
 import {HttpErrorResponse} from "@angular/common/http";
 import {NgForm} from "@angular/forms";
+import {takeUntil} from "rxjs/operators";
 
 @Component({
   selector: 'app-patient-list',
@@ -12,7 +13,9 @@ import {NgForm} from "@angular/forms";
 })
 export class PatientListComponent implements OnInit {
 
-   patients: Patient[] | undefined;
+   public patients: Patient[] | undefined;
+   public editPatient?: Patient;
+   public deletePatient?: Patient;
 
   constructor(private patientService: PatientService) {
   }
@@ -21,7 +24,17 @@ export class PatientListComponent implements OnInit {
     this.getPatients();
   }
 
-  private getPatients(): void {
+
+
+
+  submit() {
+    console.log("Form Submitted")
+    // console.log(this.contactForm.value)
+  }
+
+
+
+  public getPatients(): void {
     this.patientService.getPatients().subscribe(
       (response:Patient[]) => {
         this.patients = response;},
@@ -47,7 +60,7 @@ export class PatientListComponent implements OnInit {
     this.patientService.addPatient(patient)
       .subscribe(
         (response: Patient) => {
-          // console.log(response);
+           console.log(response);
           // @ts-ignore
           this.patients = [...this.patients, response]
         },
@@ -58,17 +71,64 @@ export class PatientListComponent implements OnInit {
   }
 
   public onDeletePatient(patientId: number): void {
+    console.log(patientId)
     this.patientService.deletePatient(patientId)
+      // .pipe(takeUntil(this.destroy&))
       .subscribe(
         (response: void) => {
-          // console.log(response);
+           console.log(response);
           // @ts-ignore
-          this.patients = this.patients.filter((patient)=> patientId !== patientId)
+          this.patients = this.patients.filter((patient)=> patient.id !== patientId)
         },
         (error: HttpErrorResponse) => {
           alert(error.message);
         }
       );
+  }
+
+  // public searchPatients(key: string): void {
+  //   console.log(key);
+  //   const results: Patient[] = [];
+  //   for (const patient of this.patients) {
+  //     if (patient.firstName.toLowerCase().indexOf(key.toLowerCase()) !== -1
+  //       || patient.lastName.toLowerCase().indexOf(key.toLowerCase()) !== -1
+  //       || patient.dateOfBirth.toLowerCase().indexOf(key.toLowerCase()) !== -1
+  //       || patient.telephoneNumber.toLowerCase().indexOf(key.toLowerCase()) !== -1) {
+  //       results.push(patient);
+  //     }
+  //   }
+  //   this.patients = results;
+  //   if (results.length === 0 || !key) {
+  //     this.getPatients();
+  //   }
+  // }
+
+  public onOpenModal(patient: Patient, mode: string): void{
+    const container = document.getElementById('main-container')
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-toggle', 'modal');
+    if (mode === 'add'){
+      button.setAttribute('data-target', '#addPatientModal');
+    }
+    if (mode === 'addDoctor'){
+      button.setAttribute('data-target', '#addDoctorModal');
+    }
+    if (mode === 'workTime'){
+      this.editPatient = patient;
+      button.setAttribute('data-target', '#workTimeModal');
+    }
+    if (mode === 'edit'){
+      this.editPatient = patient;
+      button.setAttribute('data-target', '#updatePatientModal');
+    }
+    if (mode === 'delete'){
+      this.deletePatient = patient;
+      button.setAttribute('data-target', '#deletePatientModal');
+    }
+    container?.appendChild(button);
+    button.click();
   }
 
 }

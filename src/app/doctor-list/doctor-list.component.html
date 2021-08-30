@@ -1,10 +1,50 @@
 <div >
-  <p>doctor-list works!</p>
+  <p>Gydytojų aplinka---------------------------------------------</p>
 </div>
-<p>Gydytojai iš duombazės</p>
+
+<form #doctorUpdateForm="ngForm" >
+  <label for="doctorGet">Pasirinkite redaguojamą gydytoją iš sąrašo</label>
+  <select id="doctorGet" ngModel name="doctor" class="form-control" multiple aria-label="multiple select example" required>
+    <option *ngFor="let doctor of doctors" [value]="[doctor.doctorName]">
+      {{doctor.doctorName}} ( {{doctor.doctorSpecialization }} )
+    </option>
+  </select>
+
+<!--  <div class="col-12 ">-->
+<!--    <button ngModel="doc" type="submit" class="btn btn-secondary">Redaguoti</button>-->
+<!--  </div>-->
+</form>
+
+
+<!--<form #doctorUpdateForm="ngForm" (ngSubmit)="onUpdateDoctor(doctorUpdateForm.value)">-->
+<!--  <label for="doctorUpdate">Pasirinkite gydytoją iš sąrašo</label>-->
+<!--  <select id="doctorUpdate" ngModel name="doctor" class="form-control" multiple aria-label="multiple select example" required>-->
+<!--    <option *ngFor="let doctor of doctors" [value]="[doctor.doctorName]">-->
+<!--      {{doctor.doctorName}} ( {{doctor.doctorSpecialization }} )-->
+<!--    </option>-->
+<!--  </select>-->
+<!--  <div class="col-12 ">-->
+<!--    <button [disabled]="doctorUpdateForm.invalid" type="submit" class="btn btn-secondary">Redaguoti</button>-->
+<!--  </div>-->
+<!--</form>-->
+
+
+<!--<form #doctorForm="ngForm" (ngSubmit)="onDeleteDoctor(doctorForm.value)">-->
+<!--  <label for="doctor">Pasirinkite gydytoją iš sąrašo</label>-->
+<!--  <select id="doctor" ngModel name="doctor" class="form-control" multiple aria-label="multiple select example" required>-->
+<!--    <option *ngFor="let doctor of doctors" [value]="[doctor.doctorName]">-->
+<!--      {{doctor.doctorName}} ( {{doctor.doctorSpecialization }} )-->
+<!--    </option>-->
+<!--  </select>-->
+<!--<div class="col-12 ">-->
+<!--  <button [disabled]="doctorForm.invalid" type="submit" class="btn btn-warning">Ištrinti</button>-->
+<!--</div>-->
+<!--</form>-->
+
+<p>Gydytojų sąrašas:</p>
 <div class="container">
   <tr *ngFor="let doctor of doctors" >
-    <td> Daktaro vardas ir pavardė: {{doctor.doctorName }} </td>
+    <td> Vardas ir pavardė: {{doctor.doctorName }} </td>
     <td> _ specializacija: {{doctor.doctorSpecialization }} </td>
   </tr>
 </div>

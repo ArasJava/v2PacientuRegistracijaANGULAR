@@ -66,7 +66,7 @@ export class RegistrationListComponent implements OnInit {
         (response: void) => {
           // console.log(response);
           // @ts-ignore
-          this.registrations = this.registrations.filter((registration) =>registrationId !== registrationId)
+          this.registrations = this.registrations.filter((registration) =>registration.id !== registrationId)
         },
         (error: HttpErrorResponse) => {
           alert(error.message);

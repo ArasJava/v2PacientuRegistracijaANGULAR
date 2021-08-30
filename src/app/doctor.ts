@@ -1,6 +1,6 @@
-export class Doctor {
+export interface Doctor {
 
-  id: number | undefined;
-  doctorName: string | undefined;
-  doctorSpecialization: string | undefined;
+  id: number;
+  doctorName: string;
+  doctorSpecialization: string;
 }

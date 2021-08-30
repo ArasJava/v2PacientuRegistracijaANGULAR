@@ -1,10 +1,10 @@
 export interface Registration {
 
-  id: number | undefined;
-  patientID: number | undefined;
-  doctorID: number | undefined;
-  date: string | undefined;
-  time: string | undefined;
-  purpose: string | undefined;
-  message: string | undefined;
+  id: number;
+  patientID: number;
+  doctorID: number;
+  date: string;
+  time: string;
+  purpose: string;
+  message: string;
 }

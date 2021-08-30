@@ -1,19 +1,9 @@
 <!--<div >-->
-<!--  <p>patient-list works!</p>-->
+<!--  <p>Pacientų aplinka -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</p>-->
 <!--</div>-->
-<p>Registruoti pacientai: </p>
-<div class="container">
-  <tr *ngFor="let patient of patients">
-    <td> {{patient.firstName }} </td>
-    <td> {{patient.lastName }} </td>
-    <td> {{patient.dateOfBirth }} </td>
-    <td> {{patient.telephoneNumber }} </td>
-  </tr>
-</div>
 
-<h5 class="text"> Paciento duomenys</h5>
+<h5 class="text"> Paciento duomenu įvedimas</h5>
 <form #patientForm="ngForm" (ngSubmit)="onAddPatient(patientForm.value)">
-
 <div class="mb-3" style="width: 24rem">
   <label for="firstName" class="form-label">VARDAS</label>
   <input type="text" ngModel name="firstName" class="form-control" id="firstName"
@@ -28,16 +18,170 @@
   <label for="dateOfBirth" class="form-label">GIMIMO DATA ( pasirinkite kalendoriuje )</label>
   <input type="date" ngModel name="dateOfBirth" class="form-control" id="dateOfBirth" required>
 </div>
-
-
 <div class="mb-3" style="width: 24rem">
   <label for="telephoneNumber" class="form-label">TELEFONO NUMERIS (pavyzdžiui +370 000 0000)</label>
   <input type="text" ngModel name="telephoneNumber" class="form-control" id="telephoneNumber"
          placeholder="telefono numerio įrašymo vieta" required>
 </div>
-
 <div class="col-12 ">
   <button [disabled]="patientForm.invalid" type="submit" class="btn btn-primary">Patvirtinti</button>
 </div>
 </form>
 
+<!--<form #patientGetForm="ngForm" (ngSubmit)="getPatient(patientGetForm.value)">-->
+<!--  <label for="patientGet">Pasirinkite redagavimui pacientą iš sąrašo</label>-->
+<!--  <select id="patientGet" ngModel name="id" class="form-control" multiple aria-label="multiple select example" required>-->
+<!--    <option *ngFor="let patient of patients" [value]="patient.id">-->
+<!--      {{patient.firstName}} {{patient.lastName}} {{patient.dateOfBirth}} {{patient.telephoneNumber}} {{patient.id}}-->
+<!--    </option>-->
+<!--  </select>-->
+<!--  <div class="col-12 ">-->
+<!--    <button [disabled]="patientGetForm.invalid" type="submit" class="btn btn-primary">Patvirtinti pasirinikimą</button>-->
+<!--  </div>-->
+<!--</form>-->
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-secondary" xmlns="http://www.w3.org/1999/html">
+  <h2 class="navbar-brand" style="color:yellowgreen;">Užregistruoti pacientai</h2>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
+          data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+          aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+<!--        <a class="nav-link" style="color:yellow;" (click)="onOpenModal(null, 'add')">Registruoti pacientą-->
+<!--          <span class="sr-only">(current)</span></a>-->
+      </li>
+      <li class="nav-item active">
+<!--        <a class="nav-link" style="color:sandybrown;" (click)="onOpenModal(null, 'workTime')">Gydytojų darbo grafikai-->
+<!--          <span class="sr-only">(current)</span></a>-->
+      </li>
+      <li class="nav-item active">
+<!--        <a class="nav-link" style="color:skyblue;" (click)="onOpenModal(null, 'addDoctor')">Pridedame naują gydytoją-->
+<!--          <span class="sr-only">(current)</span></a>-->
+      </li>
+    </ul>
+
+<!--    <form class="form-inline my-2 my-lg-0">-->
+<!--      <input type="search" (ngModelChange)="searchPatient(key.value)" #key="ngModel" ngModel-->
+<!--             name="key" id="searchName" class="form-control mr-sm-2" placeholder="Pacientai pagal vardą..." required>-->
+<!--    </form>-->
+  </div>
+</nav>
+
+<div class="container" id="main-container">
+  <div class="row">
+    <div *ngFor="let patient of patients" class="col-md-6 col-xl-3">
+      <div class="card m-b-30">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Vardas : {{patient?.firstName}}</li>
+          <li class="list-group-item">Pavardė : {{patient?.lastName}}</li>
+          <li class="list-group-item">Gimimo data : {{patient?.dateOfBirth}}</li>
+          <li class="list-group-item">Telefonas : {{patient?.telephoneNumber}}</li>
+        </ul>
+        <div class="card-body">
+          <div class="float-left btn-group btn-group-sm">
+            <a (click)="onOpenModal(patient, 'edit')" class="btn btn-primary tooltips" data-placement="top"
+               data-original-title="Redaguoti"><i class="fa fa-pencil"></i> </a>
+            <a (click)="onOpenModal(patient, 'delete')" class="btn btn-danger tooltips" data-placement="top"
+               data-original-title="Ištrinti"><i class="fa fa-times"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!--</div>-->
+
+<!-- Edit Registration Modal -->
+<div class="modal fade" id="updatePatientModal" tabindex="-1" role="dialog" aria-labelledby="patientEditModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updatePatientModalLabel">Redaguojame paciento {{editPatient?.firstName}} duomenis</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #editForm="ngForm">
+          <div class="form-group">
+            <label for="" class="form-label">VARDAS</label>
+            <input type="text" ngModel="{{editPatient?.firstName}}" name="firstName" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="" class="form-label">PAVARDĖ</label>
+            <input type="text" ngModel="{{editPatient?.lastName}}" name="lastName" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="" class="form-label">GIMIMO DATA</label>
+            <input type="text" ngModel="{{editPatient?.dateOfBirth}}" name="dateOfBirth" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="" class="form-label">TELEFONO NUMERIS</label>
+            <input type="text" ngModel="{{editPatient?.telephoneNumber}}" name="telephoneNumber" class="form-control">
+          </div>
+          <input type="hidden" ngModel="{{editPatient?.id}}" name="id" class="form-control" id="id">
+<!--          <input type="hidden" ngModel="{{editPatient?.PatientCode}}" name="userCode" class="form-control"-->
+<!--                 id="userCode">-->
+          <div class="modal-footer">
+            <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Atsisakyti</button>
+            <button (click)="onUpdatePatient(editForm.value)" data-dismiss="modal" class="btn btn-primary">
+              Patvirtinti
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--  <div class="modal fade" id="deletePatientModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel"-->
+<!--       aria-hidden="true">-->
+<!--    <div class="modal-dialog" role="document">-->
+<!--      <div class="modal-content">-->
+<!--        <div class="modal-header">-->
+<!--          <h5 class="modal-title" id="deleteModelLabel">Registracijos panaikinimas</h5>-->
+<!--          <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--            <span aria-hidden="true">&times;</span>-->
+<!--          </button>-->
+<!--        </div>-->
+<!--        <div class="modal-body">-->
+<!--          <p>Ar tikrai norite ištrinti paciento {{deletePatient?.firstName}} registraciją ?</p>-->
+<!--          <div class="modal-footer">-->
+<!--            <button (click)="onDeletePatient(deletePatient?.id)" class="btn btn-danger" data-dismiss="modal">Taip-->
+<!--            </button>-->
+<!--            <button type="button" class="btn btn-secondary" data-dismiss="modal">Ne</button>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+
+</div>
+
+<!--<form #patientDeleteForm="ngForm" (ngSubmit)="onDeletePatient(patientDeleteForm.value)">-->
+<!--  <label for="patientDel">Pasirinkite trinamą pacientą iš sąrašo</label>-->
+<!--  <select id="patientDel" ngModel name="id" class="form-control" multiple aria-label="multiple select example" required>-->
+<!--    <option *ngFor="let patient of patients" [value]="patient.id">-->
+<!--     {{patient.firstName}} {{patient.lastName}} {{patient.dateOfBirth}} {{patient.telephoneNumber}} {{patient.id}}-->
+<!--    </option>-->
+<!--  </select>-->
+<!--  <div class="col-12 ">-->
+<!--    <button [disabled]="patientDeleteForm.invalid" type="submit" class="btn btn-primary">Patvirtinti ištrynimą</button>-->
+<!--  </div>-->
+<!--</form>-->
+
+<!--<p>Registruoti pacientai: </p>-->
+<!--<div class="container">-->
+<!--  <tr *ngFor="let patient of patients">-->
+<!--    <td> {{patient.id }} </td>-->
+<!--    <td> {{patient.firstName }} </td>-->
+<!--    <td> {{patient.lastName }} </td>-->
+<!--    <td> {{patient.dateOfBirth }} </td>-->
+<!--    <td> {{patient.telephoneNumber }} </td>-->
+<!--  </tr>-->
+<!--</div>-->

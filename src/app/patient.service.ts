@@ -16,6 +16,10 @@ export class PatientService {
     return this.httpClient.get<Patient[]>(`${this.baseURL}/all`);
   }
 
+  // public getPatient(patientId: number): Observable<Patient>{
+  //   return this.httpClient.get<Patient>(`${this.baseURL}/find/${patientId}`);
+  // }
+
   public addPatient(patient: Patient): Observable<Patient>{
     return this.httpClient.post<Patient>(`${this.baseURL}/add`, patient);
   }

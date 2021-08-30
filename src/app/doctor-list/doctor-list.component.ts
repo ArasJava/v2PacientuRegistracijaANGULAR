@@ -76,7 +76,7 @@ export class DoctorListComponent implements OnInit {
         (response: void) => {
           // console.log(response);
           // @ts-ignore
-          this.doctors = this.doctors.filter((doctor)=>doctorId !==doctorId)
+          this.doctors = this.doctors.filter((doctor)=>doctor.id !== doctorId)
         },
         (error: HttpErrorResponse) => {
           alert(error.message);
