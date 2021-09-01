@@ -1,32 +1,31 @@
-<div >
-  <p>Gydytojų aplinka---------------------------------------------</p>
-</div>
+<!--<div >-->
+<!--  <p>Gydytojų aplinka-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</p>-->
+<!--</div>-->
 
-<form #doctorUpdateForm="ngForm" >
-  <label for="doctorGet">Pasirinkite redaguojamą gydytoją iš sąrašo</label>
-  <select id="doctorGet" ngModel name="doctor" class="form-control" multiple aria-label="multiple select example" required>
-    <option *ngFor="let doctor of doctors" [value]="[doctor.doctorName]">
-      {{doctor.doctorName}} ( {{doctor.doctorSpecialization }} )
-    </option>
-  </select>
-
-<!--  <div class="col-12 ">-->
-<!--    <button ngModel="doc" type="submit" class="btn btn-secondary">Redaguoti</button>-->
-<!--  </div>-->
-</form>
-
-
-<!--<form #doctorUpdateForm="ngForm" (ngSubmit)="onUpdateDoctor(doctorUpdateForm.value)">-->
-<!--  <label for="doctorUpdate">Pasirinkite gydytoją iš sąrašo</label>-->
-<!--  <select id="doctorUpdate" ngModel name="doctor" class="form-control" multiple aria-label="multiple select example" required>-->
+<!--<form #doctorUpdateForm="ngForm" >-->
+<!--  <label for="doctorGet">Pasirinkite redaguojamą gydytoją iš sąrašo</label>-->
+<!--  <select id="doctorGet" ngModel name="doctor" class="form-control" multiple aria-label="multiple select example" required>-->
 <!--    <option *ngFor="let doctor of doctors" [value]="[doctor.doctorName]">-->
 <!--      {{doctor.doctorName}} ( {{doctor.doctorSpecialization }} )-->
 <!--    </option>-->
 <!--  </select>-->
-<!--  <div class="col-12 ">-->
-<!--    <button [disabled]="doctorUpdateForm.invalid" type="submit" class="btn btn-secondary">Redaguoti</button>-->
-<!--  </div>-->
+<!--&lt;!&ndash;  <div class="col-12 ">&ndash;&gt;-->
+<!--&lt;!&ndash;    <button ngModel="doc" type="submit" class="btn btn-secondary">Redaguoti</button>&ndash;&gt;-->
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
 <!--</form>-->
+
+<h5 class="text-center"> {{selectDoctorFormTitle}}</h5>
+<form #doctorUpdateForm="ngForm" (ngSubmit)="onUpdateDoctor(doctorUpdateForm.value)">
+  <label for="doctorUpdate">Pasirinkite gydytoją iš sąrašo</label>
+  <select id="doctorUpdate" ngModel name="doctor" class="form-control" multiple aria-label="multiple select example" required>
+    <option *ngFor="let doctor of doctors" [value]="[doctor.doctorName]">
+      {{doctor.doctorName}} ( {{doctor.doctorSpecialization }} )
+    </option>
+  </select>
+  <div class="col-12 ">
+    <button [disabled]="doctorUpdateForm.invalid" type="submit" class="btn btn-secondary">Patvirtinti pasirinkimą</button>
+  </div>
+</form>
 
 
 <!--<form #doctorForm="ngForm" (ngSubmit)="onDeleteDoctor(doctorForm.value)">-->

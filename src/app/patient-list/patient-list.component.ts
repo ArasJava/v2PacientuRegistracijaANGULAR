@@ -13,7 +13,7 @@ import {takeUntil} from "rxjs/operators";
 })
 export class PatientListComponent implements OnInit {
 
-   public patients: Patient[] | undefined;
+   public patients?: Patient[] ;
    public editPatient?: Patient;
    public deletePatient?: Patient;
 

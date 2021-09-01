@@ -3,6 +3,7 @@ import {Doctor} from "../doctor"
 import {DoctorService} from "../doctor.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {error} from "@angular/compiler/src/util";
+import {Patient} from "../patient";
 
 @Component({
   selector: 'app-doctor-list',
@@ -11,8 +12,11 @@ import {error} from "@angular/compiler/src/util";
 })
 export class DoctorListComponent implements OnInit {
 
-
-  doctors: Doctor[] | undefined;
+  selectDoctorFormTitle = 'Pasirinkite gydytoją';
+  // doctors: Doctor[] | undefined;
+  public doctors?: Doctor[] ;
+  public editDoctor?: Doctor;
+  public deleteDoctor?: Doctor;
 
   constructor(private doctorService: DoctorService) {
   }
@@ -83,5 +87,34 @@ export class DoctorListComponent implements OnInit {
         }
       );
   }
+
+  public onOpenModal(doctor: Doctor, mode: string): void{
+    const container = document.getElementById('main-container')
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-toggle', 'modal');
+    if (mode === 'add'){
+      button.setAttribute('data-target', '#addDoctorModal');
+    }
+    if (mode === 'addDoctor'){
+      button.setAttribute('data-target', '#addDoctorModal');
+    }
+    // if (mode === 'workTime'){
+    //   this.editDoctor = doctor;
+    //   button.setAttribute('data-target', '#workTimeModal');
+    // }
+    if (mode === 'edit'){
+      this.editDoctor = doctor;
+      button.setAttribute('data-target', '#updateDoctorModal');
+    }
+    if (mode === 'delete'){
+      this.deleteDoctor = doctor;
+      button.setAttribute('data-target', '#deleteDoctorModal');
+    }
+    container?.appendChild(button);
+    button.click();
+  }
+
 
 }

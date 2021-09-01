@@ -12,7 +12,6 @@ import {HttpErrorResponse} from "@angular/common/http";
 })
 export class RegistrationListComponent implements OnInit {
   registrationFormTitle = 'Registracija į dermatologinę kliniką';
-  selectDoctorFormTitle = 'Pasirinkite gydytoją';
   registrationDone = ''
 
   registrations: Registration[] | undefined;

@@ -1,5 +1,5 @@
 <!--<div >-->
-<!--  <p>Pacientų aplinka -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</p>-->
+<!--  <p>Pacientų aplinka -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</p>-->
 <!--</div>-->
 
 <h5 class="text"> Paciento duomenu įvedimas</h5>
@@ -139,41 +139,30 @@
   </div>
 </div>
 
-<!--  <div class="modal fade" id="deletePatientModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel"-->
-<!--       aria-hidden="true">-->
-<!--    <div class="modal-dialog" role="document">-->
-<!--      <div class="modal-content">-->
-<!--        <div class="modal-header">-->
-<!--          <h5 class="modal-title" id="deleteModelLabel">Registracijos panaikinimas</h5>-->
-<!--          <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-<!--            <span aria-hidden="true">&times;</span>-->
-<!--          </button>-->
-<!--        </div>-->
-<!--        <div class="modal-body">-->
-<!--          <p>Ar tikrai norite ištrinti paciento {{deletePatient?.firstName}} registraciją ?</p>-->
-<!--          <div class="modal-footer">-->
+  <div class="modal fade" id="deletePatientModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel"
+       aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModelLabel">Registracijos panaikinimas</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Ar tikrai norite ištrinti paciento {{deletePatient?.firstName}} registraciją ?</p>
+          <div class="modal-footer">
 <!--            <button (click)="onDeletePatient(deletePatient?.id)" class="btn btn-danger" data-dismiss="modal">Taip-->
 <!--            </button>-->
-<!--            <button type="button" class="btn btn-secondary" data-dismiss="modal">Ne</button>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Ne</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </div>
 
-<!--<form #patientDeleteForm="ngForm" (ngSubmit)="onDeletePatient(patientDeleteForm.value)">-->
-<!--  <label for="patientDel">Pasirinkite trinamą pacientą iš sąrašo</label>-->
-<!--  <select id="patientDel" ngModel name="id" class="form-control" multiple aria-label="multiple select example" required>-->
-<!--    <option *ngFor="let patient of patients" [value]="patient.id">-->
-<!--     {{patient.firstName}} {{patient.lastName}} {{patient.dateOfBirth}} {{patient.telephoneNumber}} {{patient.id}}-->
-<!--    </option>-->
-<!--  </select>-->
-<!--  <div class="col-12 ">-->
-<!--    <button [disabled]="patientDeleteForm.invalid" type="submit" class="btn btn-primary">Patvirtinti ištrynimą</button>-->
-<!--  </div>-->
-<!--</form>-->
 
 <!--<p>Registruoti pacientai: </p>-->
 <!--<div class="container">-->

@@ -2,7 +2,7 @@
 <!--  <p>registration-list works!</p>-->
 <!--</div>-->
 <h5 class="text-center"> {{registrationFormTitle}}</h5>
-<h5 class="text-center"> {{selectDoctorFormTitle}}</h5>
+
 
 <!--<div class="container">-->
 <!--  <div class="row justify-content-center">-->
@@ -34,15 +34,6 @@
 <!--    <form #addFormReg="ngForm" (ngSubmit)="getDoctors(addFormReg)">-->
 
 
-<div class="form-select" >
-  <label for="doctor">Pasirinkite gydytoją iš sąrašo</label>
-  <select id="doctor" ngModel name="doctor" class="form-control" multiple aria-label="multiple select example">
-    <option *ngFor="let doctor of doctors" [value]="[doctor]">
-      {{doctor}}
-    </option>
-  </select>
-</div>
-
 <!--</form>-->
 <!--<div class="col-sm mb-3" >-->
 <!--  <select class="form-select" multiple aria-label="multiple select example">-->
@@ -55,32 +46,24 @@
 <!--  </select>-->
 <!--</div>-->
 
-<!--<p>Registracijos iš duombazės</p>-->
-<!--<div class="container">-->
-<!--  <div *ngFor="let registration of registrations">-->
-<!--    <div> Pat_Id: {{registration.patientID }} </div>-->
-<!--    <div> Doc_Id: {{registration.doctorID }} </div>-->
-<!--    <div> Date: {{registration.date }} </div>-->
-<!--    <div> Time: {{registration.time }} </div>-->
-<!--    <div> Purpose: {{registration.purpose }} </div>-->
-<!--    <div> Message: {{registration.message }} </div>-->
-<!--  </div>-->
-<!--</div>-->
 
 
 
 
-<!--    <form #addFormDoc="ngForm" (ngSubmit)="onAddEmployee(addFormDoc)">-->
 
+    <form #addFormReg="ngForm" (ngSubmit)="onAddRegistration(addFormReg.value)">
     <div class="col-sm mb-3">
       <select class="form-select" multiple aria-label="multiple select example">
-        <option selected>Pažymėkite prašau kas tai bus:</option>
+<!--        <option selected>Pažymėkite prašau kas tai bus:</option>-->
         <option value="pirmine">1. PIRMINĖ KONSULTACIJA</option>
         <option value="pakartotinė">2. PAKARTOTINĖ KONSULTACIJA</option>
         <option value="procedūra">3. REGISTRACIJA PROCEDŪRAI</option>
       </select>
     </div>
-
+      <div class="col-12 ">
+      <button [disabled]="addFormReg.invalid" type="submit" class="btn btn-secondary">Patvirtinti pasirinkimą</button>
+      </div>
+    </form>
 <!--&lt;!&ndash;Data picker begin&ndash;&gt;-->
 <!--    <div class="col-sm col-xs-12 col-12 col-md-4 form-group form-control-color">-->
 <!--      <input type="text"-->
@@ -96,27 +79,6 @@
 <!--    &lt;!&ndash;    </div>&ndash;&gt;-->
 <!--&lt;!&ndash;Data picker end&ndash;&gt;-->
 
-<!--    <form #addFormReg="ngForm" (ngSubmit)="onAddPatient(addFormReg)">-->
-    <div class="mb-3" style="width: 24rem">
-      <label for="firstName" class="form-label">VARDAS</label>
-      <input type="text" ngModel name="firstName" class="form-control" id="firstName"
-             placeholder="vardo įrašymo vieta ">
-    </div>
-    <div class="mb-3" style="width: 24rem">
-      <label for="lastName" class="form-label">PAVARDĖ</label>
-      <input type="text" ngModel name="lastName" class="form-control" id="lastName"
-             placeholder="pavardės įrašymo vieta ">
-    </div>
-    <div class="mb-3" style="width: 24rem">
-      <label for="dayOfBirth" class="form-label">GIMIMO DATA ( pasirinkite kalendoriuje )</label>
-      <input type="date" ngModel name="dayOfBirth" class="form-control" id="dayOfBirth" placeholder="">
-    </div>
-    <div class="mb-3" style="width: 24rem">
-      <label for="telephoneNumber" class="form-label">TELEFONO NUMERIS (pavyzdžiui +370 000 0000)</label>
-      <input type="text" ngModel name="telephoneNumber" class="form-control" id="telephoneNumber"
-             placeholder="telefono numerio įrašymo vieta ">
-    </div>
-<!--    </form>-->
 
     <div class="mb-3">
       <label for="message" class="form-label">Patikslinkite prašau vizito tikslą</label>
@@ -134,5 +96,15 @@
       <h3 class="text-center"> {{registrationDone}}</h3>
     </div>
 
-
+<p>Registracijos iš duombazės</p>
+<div class="container">
+  <div *ngFor="let registration of registrations">
+    <div> Pat_Id: {{registration.patientID }} </div>
+    <div> Doc_Id: {{registration.doctorID }} </div>
+    <div> Date: {{registration.date }} </div>
+    <div> Time: {{registration.time }} </div>
+    <div> Purpose: {{registration.purpose }} </div>
+    <div> Message: {{registration.message }} </div>
+  </div>
+</div>
 
