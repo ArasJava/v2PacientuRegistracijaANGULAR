@@ -3,6 +3,32 @@
 <!--</div>-->
 <h5 class="text-center"> {{registrationFormTitle}}</h5>
 
+<h5 class="text"> Registracijos duomenu įvedimas</h5>
+<form #regForm="ngForm" (ngSubmit)="onAddRegistration(regForm.value)">
+  <div class="mb-3" style="width: 24rem">
+    <label for="date" class="form-label">DATA</label>
+    <input type="text" ngModel name="date" class="form-control" id="date"
+           placeholder="datos įrašymo vieta" required>
+  </div>
+  <div class="mb-3" style="width: 24rem">
+    <label for="time" class="form-label">LAIKAS</label>
+    <input type="text" ngModel name="time" class="form-control" id="time"
+           placeholder="laiko įrašymo vieta" required>
+  </div>
+  <div class="mb-3" style="width: 24rem" data-date-format="yyyy-mm-dd">
+    <label for="purpose" class="purpose">PIRMAS/PAKARTOTINAS/PROCEDŪRA</label>
+    <input type="text" ngModel name="purpose" class="form-control" id="purpose"
+           placeholder="vizito rūšies įrašymo vieta"required>
+  </div>
+  <div class="mb-3" style="width: 24rem">
+    <label for="message" class="form-label">VIZITO PRIEŽASTIS</label>
+    <input type="text" ngModel name="message" class="form-control" id="message"
+           placeholder="vizito tikslo įrašymo vieta" required>
+  </div>
+  <div class="col-12 ">
+    <button [disabled]="regForm.invalid" type="submit" class="btn btn-primary">Patvirtinti</button>
+  </div>
+</form>
 
 <!--<div class="container">-->
 <!--  <div class="row justify-content-center">-->
@@ -34,77 +60,48 @@
 <!--    <form #addFormReg="ngForm" (ngSubmit)="getDoctors(addFormReg)">-->
 
 
-<!--</form>-->
-<!--<div class="col-sm mb-3" >-->
-<!--  <select class="form-select" multiple aria-label="multiple select example">-->
-<!--    <option *ngFor="let doctor of doctors" [value]="[doctor.name]">-->
-<!--      {{doctor.name}}-->
-<!--    <option selected>Pažymėkite prašau kas tai bus:</option>-->
-<!--    <option value="pirmine">1. PIRMINĖ KONSULTACIJA </option>-->
-<!--    <option value="pakartotinė">2. PAKARTOTINĖ KONSULTACIJA</option>-->
-<!--    <option value="procedūra">3. REGISTRACIJA PROCEDŪRAI</option>-->
-<!--  </select>-->
-<!--</div>-->
 
-
-
-
-
-
-    <form #addFormReg="ngForm" (ngSubmit)="onAddRegistration(addFormReg.value)">
-    <div class="col-sm mb-3">
-      <select class="form-select" multiple aria-label="multiple select example">
-<!--        <option selected>Pažymėkite prašau kas tai bus:</option>-->
-        <option value="pirmine">1. PIRMINĖ KONSULTACIJA</option>
-        <option value="pakartotinė">2. PAKARTOTINĖ KONSULTACIJA</option>
-        <option value="procedūra">3. REGISTRACIJA PROCEDŪRAI</option>
-      </select>
-    </div>
-      <div class="col-12 ">
-      <button [disabled]="addFormReg.invalid" type="submit" class="btn btn-secondary">Patvirtinti pasirinkimą</button>
-      </div>
-    </form>
-<!--&lt;!&ndash;Data picker begin&ndash;&gt;-->
-<!--    <div class="col-sm col-xs-12 col-12 col-md-4 form-group form-control-color">-->
-<!--      <input type="text"-->
-<!--             placeholder="Datepicker"-->
-<!--             class="form-control"-->
-<!--             bsDatepicker>-->
+<!--    <form #addFormReg="ngForm" (ngSubmit)="onAddRegistration(addFormReg.value)">-->
+<!--    <div class="col-sm mb-3">-->
+<!--      <select class="form-select" multiple aria-label="multiple select example">-->
+<!--        <option value="pirmine">1. PIRMINĖ KONSULTACIJA</option>-->
+<!--        <option value="pakartotinė">2. PAKARTOTINĖ KONSULTACIJA</option>-->
+<!--        <option value="procedūra">3. REGISTRACIJA PROCEDŪRAI</option>-->
+<!--      </select>-->
 <!--    </div>-->
-<!--    &lt;!&ndash;    <div class="col-xs-12 col-12 col-md-4 form-group">&ndash;&gt;-->
-<!--    &lt;!&ndash;      <input type="text"&ndash;&gt;-->
-<!--    &lt;!&ndash;             placeholder="Daterangepicker"&ndash;&gt;-->
-<!--    &lt;!&ndash;             class="form-control"&ndash;&gt;-->
-<!--    &lt;!&ndash;             bsDaterangepicker>&ndash;&gt;-->
-<!--    &lt;!&ndash;    </div>&ndash;&gt;-->
-<!--&lt;!&ndash;Data picker end&ndash;&gt;-->
+<!--      <div class="col-12 ">-->
+<!--      <button [disabled]="addFormReg.invalid" type="submit" class="btn btn-secondary">Patvirtinti pasirinkimą</button>-->
+<!--      </div>-->
+<!--    </form>-->
 
 
-    <div class="mb-3">
-      <label for="message" class="form-label">Patikslinkite prašau vizito tikslą</label>
-      <textarea type="text" ngModel name="message" class="form-control" id="message"
-                placeholder="Pavyzdžiui: Kreipiuosi dėl ...  " rows="3"></textarea>
-    </div>
+<!--    <div class="mb-3">-->
+<!--      <label for="message" class="form-label">Patikslinkite prašau vizito tikslą</label>-->
+<!--      <textarea type="text" ngModel name="message" class="form-control" id="message"-->
+<!--                placeholder="Pavyzdžiui: Kreipiuosi dėl ...  " rows="3"></textarea>-->
+<!--    </div>-->
 
-    <div class="container">
-      <div class="col-12 center ">
-        <!--      [disabled]="addForm.invalid"-->
-        <button (click)="registrationDone = 'Užsiregistravote, ačiū'" type="submit" class="btn btn-secondary">
-          Patvirtinu
-        </button>
-      </div>
-      <h3 class="text-center"> {{registrationDone}}</h3>
-    </div>
+<!--    <div class="container">-->
+<!--      <div class="col-12 center ">-->
+<!--        &lt;!&ndash;      [disabled]="addForm.invalid"&ndash;&gt;-->
+<!--        <button (click)="registrationDone = 'Užsiregistravote, ačiū'" type="submit" class="btn btn-secondary">-->
+<!--          Patvirtinu-->
+<!--        </button>-->
+<!--      </div>-->
+<!--      <h3 class="text-center"> {{registrationDone}}</h3>-->
+<!--    </div>-->
 
-<p>Registracijos iš duombazės</p>
+
+<p>Registracijos iš DB</p>
 <div class="container">
   <div *ngFor="let registration of registrations">
-    <div> Pat_Id: {{registration.patientID }} </div>
-    <div> Doc_Id: {{registration.doctorID }} </div>
-    <div> Date: {{registration.date }} </div>
-    <div> Time: {{registration.time }} </div>
-    <div> Purpose: {{registration.purpose }} </div>
-    <div> Message: {{registration.message }} </div>
+    <td> Reg Id: {{registration.id }} </td>
+    <td> _Patient Id: {{registration.registration_id }} </td>
+    <td> _Doctor Id: {{registration.firstName }} </td>
+    <td> _Date: {{registration.date }} </td>
+    <td> _Time: {{registration.time }} </td>
+    <td> _Purpose: {{registration.purpose }} </td>
+    <td> _Message: {{registration.message }} </td>
   </div>
 </div>
 

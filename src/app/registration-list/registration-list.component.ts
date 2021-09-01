@@ -14,9 +14,10 @@ export class RegistrationListComponent implements OnInit {
   registrationFormTitle = 'Registracija į dermatologinę kliniką';
   registrationDone = ''
 
-  registrations: Registration[] | undefined;
-  doctors: Doctor[] | undefined;
-  patient: Patient[] | undefined;
+  public editRegistration?: Registration;
+  public deleteRegistration?: Registration;
+  public registrations?: Registration[] | undefined;
+
 
   constructor(private registrationService: RegistrationService) { }
 
@@ -73,5 +74,32 @@ export class RegistrationListComponent implements OnInit {
       );
   }
 
+  public onOpenModal(registration: Registration, mode: string): void{
+    const container = document.getElementById('main-container')
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-toggle', 'modal');
+    if (mode === 'add'){
+      button.setAttribute('data-target', '#addRegistrationModal');
+    }
+    if (mode === 'addDoctor'){
+      button.setAttribute('data-target', '#addRegistrationModal');
+    }
+    // if (mode === 'workTime'){
+    //   this.editEmployee = employee;
+    //   button.setAttribute('data-target', '#workTimeModal');
+    // }
+    if (mode === 'edit'){
+      this.editRegistration = registration;
+      button.setAttribute('data-target', '#updateRegistrationModal');
+    }
+    if (mode === 'delete'){
+      this.deleteRegistration = registration;
+      button.setAttribute('data-target', '#deleteRegistrationModal');
+    }
+    container?.appendChild(button);
+    button.click();
+  }
 
 }

@@ -94,9 +94,9 @@ export class DoctorListComponent implements OnInit {
     button.type = 'button';
     button.style.display = 'none';
     button.setAttribute('data-toggle', 'modal');
-    if (mode === 'add'){
-      button.setAttribute('data-target', '#addDoctorModal');
-    }
+    // if (mode === 'add'){
+    //   button.setAttribute('data-target', '#addDoctorModal');
+    // }
     if (mode === 'addDoctor'){
       button.setAttribute('data-target', '#addDoctorModal');
     }
