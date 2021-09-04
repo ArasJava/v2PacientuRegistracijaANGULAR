@@ -45,17 +45,17 @@
 <!--</div>-->
 
 
-
+<!--Gydytojo irasymo modal-->
 <h5 class="text"> Gydytojo įrašymas</h5>
 <form #doctorForm="ngForm" (ngSubmit)="onAddDoctor(doctorForm.value)">
   <div class="mb-3" style="width: 24rem">
     <label for="doctorName" class="form-label">VARDAS</label>
-    <input type="text" ngModel name="doctortName" class="form-control" id="doctorName"
+    <input type="text" ngModel name="doctorName" class="form-control" id="doctorName"
            placeholder="vardo įrašymo vieta" required>
   </div>
   <div class="mb-3" style="width: 24rem">
     <label for="doctorSurname" class="form-label">PAVARDĖ</label>
-    <input type="text" ngModel name="doctorSurame" class="form-control" id="doctorSurname"
+    <input type="text" ngModel name="doctorSurname" class="form-control" id="doctorSurname"
            placeholder="pavardės įrašymo vieta" required>
   </div>
   <div class="mb-3" style="width: 24rem" data-date-format="yyyy-mm-dd">
@@ -68,138 +68,135 @@
   </div>
 </form>
 
-<!--Dysplay all doctors-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-secondary" xmlns="http://www.w3.org/1999/html">
-  <h2 class="navbar-brand" style="color:yellowgreen;">Gydytojai</h2>
-<!--  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"-->
-<!--          data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"-->
-<!--          aria-expanded="false" aria-label="Toggle navigation">-->
-<!--    <span class="navbar-toggler-icon"></span>-->
-<!--  </button>-->
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+<!--&lt;!&ndash;Gydytojo nuskaitymo ir redagavimo modalas&ndash;&gt;-->
+<!--<nav class="navbar navbar-expand-lg navbar-dark bg-secondary" xmlns="http://www.w3.org/1999/html">-->
+<!--  <h2 class="navbar-brand" style="color:yellowgreen;">Gydytojai</h2>-->
+<!--&lt;!&ndash;  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"&ndash;&gt;-->
+<!--&lt;!&ndash;          data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"&ndash;&gt;-->
+<!--&lt;!&ndash;          aria-expanded="false" aria-label="Toggle navigation">&ndash;&gt;-->
+<!--&lt;!&ndash;    <span class="navbar-toggler-icon"></span>&ndash;&gt;-->
+<!--&lt;!&ndash;  </button>&ndash;&gt;-->
+<!--  <div class="collapse navbar-collapse" id="navbarNavDropdown">-->
 
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <!--        <a class="nav-link" style="color:yellow;" (click)="onOpenModal(null, 'add')">Registruoti pacientą-->
-        <!--          <span class="sr-only">(current)</span></a>-->
-      </li>
-      <li class="nav-item active">
-        <!--        <a class="nav-link" style="color:sandybrown;" (click)="onOpenModal(null, 'workTime')">Gydytojų darbo grafikai-->
-        <!--          <span class="sr-only">(current)</span></a>-->
-      </li>
-      <li class="nav-item active">
-<!--                <a class="nav-link" style="color:skyblue;" (click)="onOpenModal(null, 'addDoctor')">Pridedame naują gydytoją-->
-<!--                  <span class="sr-only">(current)</span></a>-->
-      </li>
-    </ul>
+<!--    <ul class="navbar-nav mr-auto">-->
+<!--      <li class="nav-item active">-->
+<!--        &lt;!&ndash;        <a class="nav-link" style="color:yellow;" (click)="onOpenModal(null, 'add')">Registruoti pacientą&ndash;&gt;-->
+<!--        &lt;!&ndash;          <span class="sr-only">(current)</span></a>&ndash;&gt;-->
+<!--      </li>-->
+<!--      <li class="nav-item active">-->
+<!--        &lt;!&ndash;        <a class="nav-link" style="color:sandybrown;" (click)="onOpenModal(null, 'workTime')">Gydytojų darbo grafikai&ndash;&gt;-->
+<!--        &lt;!&ndash;          <span class="sr-only">(current)</span></a>&ndash;&gt;-->
+<!--      </li>-->
+<!--      <li class="nav-item active">-->
+<!--&lt;!&ndash;                <a class="nav-link" style="color:skyblue;" (click)="onOpenModal(null, 'addDoctor')">Pridedame naują gydytoją&ndash;&gt;-->
+<!--&lt;!&ndash;                  <span class="sr-only">(current)</span></a>&ndash;&gt;-->
+<!--      </li>-->
+<!--    </ul>-->
 
-    <!--    <form class="form-inline my-2 my-lg-0">-->
-    <!--      <input type="search" (ngModelChange)="searchPatient(key.value)" #key="ngModel" ngModel-->
-    <!--             name="key" id="searchName" class="form-control mr-sm-2" placeholder="Pacientai pagal vardą..." required>-->
-    <!--    </form>-->
-  </div>
-</nav>
-
-<div class="container" id="main-container">
-  <div class="row">
-    <div *ngFor="let doctor of doctors" class="col-md-6 col-xl-3">
-      <div class="card m-b-30">
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Vardas : {{doctor?.doctorName}}</li>
-          <li class="list-group-item">Pavardė : {{doctor?.doctorSurname}}</li>
-          <li class="list-group-item">Gimimo data : {{doctor?.doctorSpecialization}}</li>
-        </ul>
-        <div class="card-body">
-          <div class="float-left btn-group btn-group-sm">
-            <a (click)="onOpenModal(doctor, 'edit')" class="btn btn-primary tooltips" data-placement="top"
-               data-original-title="Redaguoti"><i class="fa fa-pencil"></i> </a>
-            <a (click)="onOpenModal(doctor, 'delete')" class="btn btn-danger tooltips" data-placement="top"
-               data-original-title="Ištrinti"><i class="fa fa-times"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--</div>-->
-
-  <!-- Edit Registration Modal -->
-  <div class="modal fade" id="updateDoctorModal" tabindex="-1" role="dialog" aria-labelledby="doctorEditModalLabel"
-       aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="updateDoctorModalLabel">Redaguojame gydytojo {{editDoctor?.doctorSurname}} duomenis</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form #editForm="ngForm">
-            <div class="form-group">
-              <label for="" class="form-label">VARDAS</label>
-              <input type="text" ngModel="{{editDoctor?.doctorName}}" name="firstName" class="form-control">
-            </div>
-            <div class="form-group">
-              <label for="" class="form-label">PAVARDĖ</label>
-              <input type="text" ngModel="{{editDoctor?.doctorSurname}}" name="lastName" class="form-control">
-            </div>
-            <div class="form-group">
-              <label for="" class="form-label">GIMIMO DATA</label>
-              <input type="text" ngModel="{{editDoctor?.doctorSpecialization}}" name="dateOfBirth" class="form-control">
-            </div>
-            <input type="hidden" ngModel="{{editDoctor?.id}}" name="id" class="form-control" id="id">
-            <!--          <input type="hidden" ngModel="{{editPatient?.PatientCode}}" name="userCode" class="form-control"-->
-            <!--                 id="userCode">-->
-            <div class="modal-footer">
-              <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Atsisakyti</button>
-              <button (click)="onUpdateDoctor(editForm.value)" data-dismiss="modal" class="btn btn-primary">
-                Patvirtinti
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="deleteDoctorModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel"
-       aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="deleteModelLabel">Gydytojo ištrynimas</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p>Ar tikrai norite ištrinti paciento {{deleteDoctor?.doctorName}} registraciją ?</p>
-          <div class="modal-footer">
-<!--                        <button (click)="onDeleteDoctor(deleteDoctor?.id)" class="btn btn-danger" data-dismiss="modal">Taip-->
-<!--                        </button>-->
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Ne</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div>
+<!--    &lt;!&ndash;    <form class="form-inline my-2 my-lg-0">&ndash;&gt;-->
+<!--    &lt;!&ndash;      <input type="search" (ngModelChange)="searchPatient(key.value)" #key="ngModel" ngModel&ndash;&gt;-->
+<!--    &lt;!&ndash;             name="key" id="searchName" class="form-control mr-sm-2" placeholder="Pacientai pagal vardą..." required>&ndash;&gt;-->
+<!--    &lt;!&ndash;    </form>&ndash;&gt;-->
+<!--  </div>-->
+<!--</nav>-->
+<!--<div class="container" id="main-container">-->
+<!--  <div class="row">-->
+<!--    <div *ngFor="let doctor of doctors" class="col-md-6 col-xl-3">-->
+<!--      <div class="card m-b-30">-->
+<!--        <ul class="list-group list-group-flush">-->
+<!--          <li class="list-group-item">Vardas : {{doctor?.doctorName}}</li>-->
+<!--          <li class="list-group-item">Pavardė : {{doctor?.doctorSurname}}</li>-->
+<!--          <li class="list-group-item">Specializacija : {{doctor?.doctorSpecialization}}</li>-->
+<!--        </ul>-->
+<!--        <div class="card-body">-->
+<!--          <div class="float-left btn-group btn-group-sm">-->
+<!--            <a (click)="onOpenModal(doctor, 'edit')" class="btn btn-primary tooltips" data-placement="top"-->
+<!--               data-original-title="Redaguoti"><i class="fa fa-pencil"></i> </a>-->
+<!--            <a (click)="onOpenModal(doctor, 'delete')" class="btn btn-danger tooltips" data-placement="top"-->
+<!--               data-original-title="Ištrinti"><i class="fa fa-times"></i></a>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  &lt;!&ndash; Edit Registration Modal &ndash;&gt;-->
+<!--  <div class="modal fade" id="updateDoctorModal" tabindex="-1" role="dialog" aria-labelledby="doctorEditModalLabel"-->
+<!--       aria-hidden="true">-->
+<!--    <div class="modal-dialog" role="document">-->
+<!--      <div class="modal-content">-->
+<!--        <div class="modal-header">-->
+<!--          <h5 class="modal-title" id="updateDoctorModalLabel">Redaguojame gydytojo {{editDoctor?.doctorSurname}} duomenis</h5>-->
+<!--          <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--            <span aria-hidden="true">&times;</span>-->
+<!--          </button>-->
+<!--        </div>-->
+<!--        <div class="modal-body">-->
+<!--          <form #editForm="ngForm">-->
+<!--            <div class="form-group">-->
+<!--              <label for="" class="form-label">VARDAS</label>-->
+<!--              <input type="text" ngModel="{{editDoctor?.doctorName}}" name="doctorName" class="form-control">-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--              <label for="" class="form-label">PAVARDĖ</label>-->
+<!--              <input type="text" ngModel="{{editDoctor?.doctorSurname}}" name="doctorSurname" class="form-control">-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--              <label for="" class="form-label">SPECIALIZACIJA</label>-->
+<!--              <input type="text" ngModel="{{editDoctor?.doctorSpecialization}}" name="doctorSpecialization" class="form-control">-->
+<!--            </div>-->
+<!--            <input type="hidden" ngModel="{{editDoctor?.id}}" name="id" class="form-control" id="id">-->
+<!--            &lt;!&ndash;          <input type="hidden" ngModel="{{editPatient?.PatientCode}}" name="userCode" class="form-control"&ndash;&gt;-->
+<!--            &lt;!&ndash;                 id="userCode">&ndash;&gt;-->
+<!--            <div class="modal-footer">-->
+<!--              <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Atsisakyti</button>-->
+<!--              <button (click)="onUpdateDoctor(editForm.value)" data-dismiss="modal" class="btn btn-primary">-->
+<!--                Patvirtinti-->
+<!--              </button>-->
+<!--            </div>-->
+<!--          </form>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--&lt;!&ndash;delete modal&ndash;&gt;-->
+<!--  <div class="modal fade" id="deleteDoctorModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel"-->
+<!--       aria-hidden="true">-->
+<!--    <div class="modal-dialog" role="document">-->
+<!--      <div class="modal-content">-->
+<!--        <div class="modal-header">-->
+<!--          <h5 class="modal-title" id="deleteModelLabel">Gydytojo ištrynimas</h5>-->
+<!--          <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--            <span aria-hidden="true">&times;</span>-->
+<!--          </button>-->
+<!--        </div>-->
+<!--        <div class="modal-body">-->
+<!--          <p>Ar tikrai norite ištrinti paciento {{deleteDoctor?.doctorName}} registraciją ?</p>-->
+<!--          <div class="modal-footer">-->
+<!--&lt;!&ndash;            <button (click)="onDeleteDoctor(deleteDoctor?.id)" class="btn btn-danger" data-dismiss="modal">Taip&ndash;&gt;-->
+<!--&lt;!&ndash;            </button>&ndash;&gt;-->
+<!--            <button type="button" class="btn btn-secondary" data-dismiss="modal">Ne</button>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
 
 
+<!--<div class="mb-3" style="width: 24rem">-->
 <!--<h5 class="text-center"> {{selectDoctorFormTitle}}</h5>-->
-<!--<form #doctorUpdateForm="ngForm" (ngSubmit)="onUpdateDoctor(doctorUpdateForm.value)">-->
-<!--  <label for="doctorUpdate">Pasirinkite gydytoją iš sąrašo</label>-->
-<!--  <select id="doctorUpdate" ngModel name="doctor" class="form-control" multiple aria-label="multiple select example" required>-->
-<!--    <option *ngFor="let doctor of doctors" [value]="[doctor.doctorName]">-->
+<!--<form #docUpdateForm="ngForm" (ngSubmit)="onAddRegistration(docUpdateForm.value)">-->
+<!--  <label for="doctor_id">Pasirinkite gydytoją iš sąrašo</label>-->
+<!--  <select id="doctor_id" ngModel name="doctor_id" class="form-control" multiple aria-label="multiple select example" required>-->
+<!--    <option *ngFor="let doctor of doctors" [value]="[doctor.id]">-->
 <!--      {{doctor.doctorName}} ( {{doctor.doctorSpecialization }} )-->
 <!--    </option>-->
 <!--  </select>-->
 <!--  <div class="col-12 ">-->
-<!--    <button [disabled]="doctorUpdateForm.invalid" type="submit" class="btn btn-secondary">Patvirtinti pasirinkimą</button>-->
+<!--    <button [disabled]="docUpdateForm.invalid" type="submit" class="btn btn-secondary">Patvirtinti pasirinkimą</button>-->
 <!--  </div>-->
 <!--</form>-->
-
+<!--</div>-->
 
 <!--<form #doctorForm="ngForm" (ngSubmit)="onDeleteDoctor(doctorForm.value)">-->
 <!--  <label for="doctor">Pasirinkite gydytoją iš sąrašo</label>-->
@@ -213,6 +210,9 @@
 <!--</div>-->
 <!--</form>-->
 
+
+
+
 <p>Gydytojų sąrašas iš DB</p>
 <div class="container">
   <div *ngFor="let doctor of doctors" >
@@ -220,7 +220,6 @@
     <td> _ Vardas: {{doctor.doctorName }} </td>
     <td> _ Pavarde: {{doctor.doctorSurname }} </td>
     <td> _ Spec: {{doctor.doctorSpecialization }} </td>
-    <td> _ registrationId: {{doctor.registration_id }} </td>
   </div>
 </div>
 

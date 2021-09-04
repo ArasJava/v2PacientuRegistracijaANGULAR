@@ -40,60 +40,60 @@
 <!--  </div>-->
 <!--</form>-->
 
+<!--&lt;!&ndash;Main modal&ndash;&gt;-->
+<!--<nav class="navbar navbar-expand-lg navbar-dark bg-secondary" xmlns="http://www.w3.org/1999/html">-->
+<!--  <h2 class="navbar-brand" style="color:yellowgreen;">Užregistruoti pacientai</h2>-->
+<!--  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"-->
+<!--          data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"-->
+<!--          aria-expanded="false" aria-label="Toggle navigation">-->
+<!--    <span class="navbar-toggler-icon"></span>-->
+<!--  </button>-->
+<!--  <div class="collapse navbar-collapse" id="navbarNavDropdown">-->
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-secondary" xmlns="http://www.w3.org/1999/html">
-  <h2 class="navbar-brand" style="color:yellowgreen;">Užregistruoti pacientai</h2>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
-          data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
-          aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+<!--    <ul class="navbar-nav mr-auto">-->
+<!--      <li class="nav-item active">-->
+<!--&lt;!&ndash;        <a class="nav-link" style="color:yellow;" (click)="onOpenModal(null, 'add')">Registruoti pacientą&ndash;&gt;-->
+<!--&lt;!&ndash;          <span class="sr-only">(current)</span></a>&ndash;&gt;-->
+<!--      </li>-->
+<!--      <li class="nav-item active">-->
+<!--&lt;!&ndash;        <a class="nav-link" style="color:sandybrown;" (click)="onOpenModal(null, 'workTime')">Gydytojų darbo grafikai&ndash;&gt;-->
+<!--&lt;!&ndash;          <span class="sr-only">(current)</span></a>&ndash;&gt;-->
+<!--      </li>-->
+<!--      <li class="nav-item active">-->
+<!--&lt;!&ndash;        <a class="nav-link" style="color:skyblue;" (click)="onOpenModal(null, 'addDoctor')">Pridedame naują gydytoją&ndash;&gt;-->
+<!--&lt;!&ndash;          <span class="sr-only">(current)</span></a>&ndash;&gt;-->
+<!--      </li>-->
+<!--    </ul>-->
 
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-<!--        <a class="nav-link" style="color:yellow;" (click)="onOpenModal(null, 'add')">Registruoti pacientą-->
-<!--          <span class="sr-only">(current)</span></a>-->
-      </li>
-      <li class="nav-item active">
-<!--        <a class="nav-link" style="color:sandybrown;" (click)="onOpenModal(null, 'workTime')">Gydytojų darbo grafikai-->
-<!--          <span class="sr-only">(current)</span></a>-->
-      </li>
-      <li class="nav-item active">
-<!--        <a class="nav-link" style="color:skyblue;" (click)="onOpenModal(null, 'addDoctor')">Pridedame naują gydytoją-->
-<!--          <span class="sr-only">(current)</span></a>-->
-      </li>
-    </ul>
+<!--&lt;!&ndash;    <form class="form-inline my-2 my-lg-0">&ndash;&gt;-->
+<!--&lt;!&ndash;      <input type="search" (ngModelChange)="searchPatient(key.value)" #key="ngModel" ngModel&ndash;&gt;-->
+<!--&lt;!&ndash;             name="key" id="searchName" class="form-control mr-sm-2" placeholder="Pacientai pagal vardą..." required>&ndash;&gt;-->
+<!--&lt;!&ndash;    </form>&ndash;&gt;-->
+<!--  </div>-->
+<!--</nav>-->
 
-<!--    <form class="form-inline my-2 my-lg-0">-->
-<!--      <input type="search" (ngModelChange)="searchPatient(key.value)" #key="ngModel" ngModel-->
-<!--             name="key" id="searchName" class="form-control mr-sm-2" placeholder="Pacientai pagal vardą..." required>-->
-<!--    </form>-->
-  </div>
-</nav>
+<!--<div class="container" id="main-container">-->
+<!--  <div class="row">-->
+<!--    <div *ngFor="let patient of patients" class="col-md-6 col-xl-3">-->
+<!--      <div class="card m-b-30">-->
+<!--        <ul class="list-group list-group-flush">-->
+<!--          <li class="list-group-item">Vardas : {{patient?.firstName}}</li>-->
+<!--          <li class="list-group-item">Pavardė : {{patient?.lastName}}</li>-->
+<!--          <li class="list-group-item">Gimimo data : {{patient?.dateOfBirth}}</li>-->
+<!--          <li class="list-group-item">Telefonas : {{patient?.telephoneNumber}}</li>-->
+<!--        </ul>-->
+<!--        <div class="card-body">-->
+<!--          <div class="float-left btn-group btn-group-sm">-->
+<!--            <a (click)="onOpenModal(patient, 'edit')" class="btn btn-primary tooltips" data-placement="top"-->
+<!--               data-original-title="Redaguoti"><i class="fa fa-pencil"></i> </a>-->
+<!--            <a (click)="onOpenModal(patient, 'delete')" class="btn btn-danger tooltips" data-placement="top"-->
+<!--               data-original-title="Ištrinti"><i class="fa fa-times"></i></a>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
 
-<div class="container" id="main-container">
-  <div class="row">
-    <div *ngFor="let patient of patients" class="col-md-6 col-xl-3">
-      <div class="card m-b-30">
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Vardas : {{patient?.firstName}}</li>
-          <li class="list-group-item">Pavardė : {{patient?.lastName}}</li>
-          <li class="list-group-item">Gimimo data : {{patient?.dateOfBirth}}</li>
-          <li class="list-group-item">Telefonas : {{patient?.telephoneNumber}}</li>
-        </ul>
-        <div class="card-body">
-          <div class="float-left btn-group btn-group-sm">
-            <a (click)="onOpenModal(patient, 'edit')" class="btn btn-primary tooltips" data-placement="top"
-               data-original-title="Redaguoti"><i class="fa fa-pencil"></i> </a>
-            <a (click)="onOpenModal(patient, 'delete')" class="btn btn-danger tooltips" data-placement="top"
-               data-original-title="Ištrinti"><i class="fa fa-times"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-<!--</div>-->
 
 <!-- Edit Registration Modal -->
 <div class="modal fade" id="updatePatientModal" tabindex="-1" role="dialog" aria-labelledby="patientEditModalLabel"
@@ -161,16 +161,16 @@
     </div>
   </div>
 
-</div>
-
-
-<!--<p>Registruoti pacientai: </p>-->
-<!--<div class="container">-->
-<!--  <tr *ngFor="let patient of patients">-->
-<!--    <td> {{patient.id }} </td>-->
-<!--    <td> {{patient.firstName }} </td>-->
-<!--    <td> {{patient.lastName }} </td>-->
-<!--    <td> {{patient.dateOfBirth }} </td>-->
-<!--    <td> {{patient.telephoneNumber }} </td>-->
-<!--  </tr>-->
 <!--</div>-->
+
+
+<p>Registruoti pacientai: </p>
+<div class="container">
+  <tr *ngFor="let patient of patients">
+    <td> {{patient.id }} </td>
+    <td> {{patient.firstName }} </td>
+    <td> {{patient.lastName }} </td>
+    <td> {{patient.dateOfBirth }} </td>
+    <td> {{patient.telephoneNumber }} </td>
+  </tr>
+</div>

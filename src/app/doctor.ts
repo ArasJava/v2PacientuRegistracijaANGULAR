@@ -4,5 +4,5 @@ export interface Doctor {
   doctorName: string;
   doctorSurname: string;
   doctorSpecialization: string;
-  registration_id: number;
+
 }

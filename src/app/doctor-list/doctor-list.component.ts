@@ -4,6 +4,10 @@ import {DoctorService} from "../doctor.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {error} from "@angular/compiler/src/util";
 import {Patient} from "../patient";
+import {Registration} from "../registration";
+import {NgForm} from "@angular/forms";
+import {filter, takeUntil} from "rxjs/operators";
+import {Subject} from "rxjs";
 
 @Component({
   selector: 'app-doctor-list',
@@ -13,7 +17,8 @@ import {Patient} from "../patient";
 export class DoctorListComponent implements OnInit {
 
   selectDoctorFormTitle = 'Pasirinkite gydytoją';
-  // doctors: Doctor[] | undefined;
+  // public doctors: Doctor[] | undefined;
+
   public doctors?: Doctor[] ;
   public editDoctor?: Doctor;
   public deleteDoctor?: Doctor;
@@ -51,7 +56,7 @@ export class DoctorListComponent implements OnInit {
     this.doctorService.updateDoctor(doctor)
       .subscribe(
         (response: Doctor) => {
-          // console.log(response);
+          console.log(response);
           this.doctors = this.doctors?.map((doc)=>doc.id ===response.id ? response : doc)
         },
         (error: HttpErrorResponse) => {
@@ -75,12 +80,13 @@ export class DoctorListComponent implements OnInit {
   }
 
   public onDeleteDoctor(doctorId: number): void {
+    console.log(doctorId)
     this.doctorService.deleteDoctor(doctorId)
       .subscribe(
         (response: void) => {
-          // console.log(response);
+          console.log(response);
           // @ts-ignore
-          this.doctors = this.doctors.filter((doctor)=>doctor.id !== doctorId)
+          this.doctors = this.doctors?.filter((doctorId)=>doctorId.id !==doctorId)
         },
         (error: HttpErrorResponse) => {
           alert(error.message);
@@ -115,6 +121,7 @@ export class DoctorListComponent implements OnInit {
     container?.appendChild(button);
     button.click();
   }
+
 
 
 }

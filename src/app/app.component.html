@@ -1,7 +1,23 @@
+<!--<div class="mb-3" style="width: 24rem">-->
+<!--  <h5 class="text-center"> {{selectDoctorFormTitle}}</h5>-->
+<!--  <form #docUpdateForm="ngForm" (ngSubmit)="onAddRegistration(docUpdateForm.value)">-->
+<!--    <label for="doctor_id">Pasirinkite gydytoją iš sąrašo</label>-->
+<!--    <select id="doctor_id" ngModel name="doctor_id" class="form-control" multiple aria-label="multiple select example" required>-->
+<!--      <option *ngFor="let doctor of doctors" [value]="[doctor.id]">-->
+<!--        {{doctor.doctorName}} ( {{doctor.doctorSpecialization }} )-->
+<!--      </option>-->
+<!--    </select>-->
+<!--    <div class="col-12 ">-->
+<!--      <button [disabled]="docUpdateForm.invalid" type="submit" class="btn btn-secondary">Patvirtinti pasirinkimą</button>-->
+<!--    </div>-->
+<!--  </form>-->
+<!--  </div>-->
+
+
 
 <div class= "container">
-  <app-doctor-list></app-doctor-list>
-<!--  <app-registration-list></app-registration-list>-->
+<!--  <app-doctor-list></app-doctor-list>-->
+  <app-registration-list></app-registration-list>
 <!--  <app-patient-list></app-patient-list>-->
 </div>
 

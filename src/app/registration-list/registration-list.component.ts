@@ -4,6 +4,7 @@ import {Registration} from "../registration";
 import {RegistrationService} from "../registration.service";
 import {Doctor} from "../doctor";
 import {HttpErrorResponse} from "@angular/common/http";
+import {DoctorService} from "../doctor.service";
 
 @Component({
   selector: 'app-registration-list',
@@ -17,12 +18,16 @@ export class RegistrationListComponent implements OnInit {
   public editRegistration?: Registration;
   public deleteRegistration?: Registration;
   public registrations?: Registration[] | undefined;
-
+  public doctors: Doctor[] | undefined;
 
   constructor(private registrationService: RegistrationService) { }
 
+
   ngOnInit(): void {
-  this.getRegistrations()}
+  this.getRegistrations()
+
+  this.getDoctors()
+  }
 
   private getRegistrations(): void {
     this.registrationService.getRegistrations().subscribe(
@@ -100,6 +105,15 @@ export class RegistrationListComponent implements OnInit {
     }
     container?.appendChild(button);
     button.click();
+  }
+
+  private getDoctors(): void {
+    this.registrationService.getDoctors().subscribe(
+      (response:Doctor[]) => {
+        this.doctors = response;},
+      (error :HttpErrorResponse) => {
+        alert(error.message);
+      });
   }
 
 }

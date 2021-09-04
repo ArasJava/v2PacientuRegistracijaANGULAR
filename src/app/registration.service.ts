@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Registration} from "./registration";
 import {Doctor} from "./doctor";
+import {DoctorService} from "./doctor.service";
 
 @Injectable({
   providedIn: 'root'
@@ -32,4 +33,7 @@ export class RegistrationService {
   public getDoctors(): Observable<Doctor[]>{
     return this.httpClient.get<Doctor[]>(`${this.baseURL}/all`);
   }
+
+
+
 }

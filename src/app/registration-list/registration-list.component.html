@@ -1,10 +1,30 @@
 <!--<div>-->
 <!--  <p>registration-list works!</p>-->
 <!--</div>-->
-<h5 class="text-center"> {{registrationFormTitle}}</h5>
+
+<!--<h5 class="text-center"> {{registrationFormTitle}}</h5>-->
 
 <h5 class="text"> Registracijos duomenu įvedimas</h5>
 <form #regForm="ngForm" (ngSubmit)="onAddRegistration(regForm.value)">
+
+<!--<div class="mb-3" style="width: 24rem">-->
+<!--    <label for="doctor_id">Pasirinkite gydytoją iš sąrašo</label>-->
+<!--    <select id="doctor_id" ngModel name="doctor_id" class="form-control" multiple aria-label="multiple select example" required>-->
+<!--      <option *ngFor="let doctor of doctors" [value]="[doctor.id]">-->
+<!--        {{doctor.doctorName}} ( {{doctor.doctorSpecialization }} )-->
+<!--      </option>-->
+<!--    </select>-->
+<!--  &lt;!&ndash;  <div class="col-12 ">&ndash;&gt;-->
+<!--  &lt;!&ndash;    <button [disabled]="regForm.invalid" type="submit" class="btn btn-secondary">Patvirtinti pasirinkimą</button>&ndash;&gt;-->
+<!--  &lt;!&ndash;  </div>&ndash;&gt;-->
+<!--</div>-->
+
+  <div class="mb-3" style="width: 24rem">
+    <label for="doctor_id" class="form-label">GydytojoId</label>
+    <input type="text" ngModel name="doctor_id" class="form-control" id="doctor_id"
+           placeholder="įrašymo vieta" required>
+  </div>
+
   <div class="mb-3" style="width: 24rem">
     <label for="date" class="form-label">DATA</label>
     <input type="text" ngModel name="date" class="form-control" id="date"
@@ -96,8 +116,7 @@
 <div class="container">
   <div *ngFor="let registration of registrations">
     <td> Reg Id: {{registration.id }} </td>
-    <td> _Patient Id: {{registration.registration_id }} </td>
-    <td> _Doctor Id: {{registration.firstName }} </td>
+    <td> _Doctor Id: {{registration.doctor_id }} </td>
     <td> _Date: {{registration.date }} </td>
     <td> _Time: {{registration.time }} </td>
     <td> _Purpose: {{registration.purpose }} </td>
@@ -105,3 +124,12 @@
   </div>
 </div>
 
+<!--<p>Gydytojų sąrašas iš DB</p>-->
+<!--<div class="container">-->
+<!--  <div *ngFor="let doctor of doctors" >-->
+<!--    <td> Id: {{doctor.id }} </td>-->
+<!--    <td> _ Vardas: {{doctor.doctorName }} </td>-->
+<!--    <td> _ Pavarde: {{doctor.doctorSurname }} </td>-->
+<!--    <td> _ Spec: {{doctor.doctorSpecialization }} </td>-->
+<!--  </div>-->
+<!--</div>-->
